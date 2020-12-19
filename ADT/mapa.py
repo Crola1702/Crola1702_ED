@@ -12,6 +12,21 @@ class mapa():
             self.map = pht.probing_ht(initial_elements=initial_elements,load_factor=load_factor,cmpfunction=cmpfunction)
             self.type = datastructure
     
+    def __str__(self):
+        return self.map.__str__()
+    
+    def __iter__(self):
+        return self.map.__iter__()
+    
+    def __next__(self):
+        return self.map.__next__()
+    
+    def __len__(self):
+        return self.map.__len__()
+    
+    def __contains__(self, key):
+        return self.map.__contains__(key)
+
     #_______________________________
     #              API
     #_______________________________ 

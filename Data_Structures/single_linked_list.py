@@ -27,7 +27,7 @@ class sl_list():
         sl_string = 'SL:['
         for i in self:
             sl_string += str(i) + ','
-        return sl_string[:len(sl_string)-1] +']'
+        return sl_string.strip(',') +']'
 
 
     def __iter__(self):
@@ -44,6 +44,14 @@ class sl_list():
     
     def __len__(self):
         return self.size
+    
+    def __contains__(self, element):
+        return self.__has(element)
+
+    def __getitem__(self, index):
+        return self.get_element(index)
+
+
 
     def add_first(self,elemento):
         nodo = sl_node(elemento,self.first)
@@ -133,7 +141,7 @@ class sl_list():
         self.replace(pos1,node2_info)
         self.replace(pos2,node1_info)
     
-    def has(self, element):
+    def __has(self, element):
         if self.__find(element) is not None:
             return True
         return False
@@ -168,17 +176,11 @@ class sl_list():
 
 if __name__ == '__main__':
     nueva_lista = sl_list()
-    nueva_lista.add_first(1)
+    print(nueva_lista, len(nueva_lista))
+    nueva_lista.add_last(1)
+    nueva_lista.add_last(2)
     nueva_lista.add_last(3)
-    nueva_lista.insert_element(2,2)
-    nueva_lista.add_last(5)
-    nueva_lista.insert_element(4,4)
-    # for i in nueva_lista:
-        # print(i)
-    # print(nueva_lista, len(nueva_lista))
-
-    # nueva_lista.remove_first()
-    # nueva_lista.remove_last()
-    # nueva_lista.remove_pos(2)
-    # print(nueva_lista, len(nueva_lista))
+    nueva_lista.add_last(4)
+    print(nueva_lista[5])
+    print(nueva_lista, len(nueva_lista))
         

@@ -41,6 +41,12 @@ class array_list():
     def __len__(self):
         return self.size
     
+    def __contains__(self, element):
+        return self.__has(element)
+    
+    def __getitem__(self, index):
+        return self.get_element(index)
+    
     #_______________________________
     #             API
     #_______________________________
@@ -158,7 +164,7 @@ class array_list():
         self.replace(pos1,element2)
         self.replace(pos2,element1)
     
-    def has(self, element):
+    def __has(self, element):
         for index in self:
             if self.cmpfunction(index, element) == 0:
                 return True
@@ -184,11 +190,11 @@ class array_list():
             pass
 
 if __name__ == '__main__':
-    nueva_lista = array_list(base_index=0)
+    nueva_lista = array_list()
     print(nueva_lista, len(nueva_lista))
-    nueva_lista.add_first(1)
+    nueva_lista.add_last(4)
     nueva_lista.add_last(3)
-    nueva_lista.insert_element(1,2)
-    nueva_lista.add_last(5)
-    nueva_lista.insert_element(3,4)
+    nueva_lista.add_last(2)
+    nueva_lista.add_last(1)
+    print(nueva_lista[1])
     print(nueva_lista, len(nueva_lista))

@@ -25,6 +25,15 @@ class probing_ht():
     
     def __next__(self):
         return next(self)
+    
+    def __len__(self):
+        return self.size
+    
+    def __contains__(self, key):
+        return self.__contains(key)
+    
+    def __getitem__(self, key):
+        return self.get(key)
 
     #_______________________________
     #              API
@@ -58,7 +67,7 @@ class probing_ht():
             return self.__find(key)
         return None
     
-    def contains(self, key):
+    def __contains(self, key):
         if self.__find(key) is not None:
             return True
         return False

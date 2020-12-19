@@ -1,0 +1,61 @@
+ARRAY LIST
+
+- Probar y arreglar método __getitem__
+
+SINGLE LINKED LIST
+
+- Probar y arreglar método __getitem__
+- Probar diferentes Base Index
+
+ADT LISTA
+
+- Probar método __getitem__
+
+ADT QUEUE
+
+- Incluir el uso de nuevos métodos y probar
+
+ADT STACK
+
+- Incluir el uso de nuevos métodos y probar
+
+PROBING HASH TABLE
+
+- Probar y arreglar método __getitem__
+
+CHAINING HASH TABLE
+
+- Probar y arreglar método __getitem__
+
+ADT MAP
+
+- Probar y arreglar método __getitem__
+
+BINARY SEARCH TREE
+
+- Probar y arreglar método __getitem__ y __contains__
+
+RED BLACK TREE
+
+- Implementar las funciones de eliminación
+- Probar y arreglar método __getitem__ y __contains__
+
+ADT ORDERED MAP
+
+- Probar y arreglar método __getitem__ y __contains__
+
+ADJACENCY MATRIX
+
+- Hacer pruebas
+- Cambiar el método __str__ para encontrar una forma eficiente
+- Quitar el atributo directed
+
+ADJACENCY LIST
+
+- Reimplementar los métodos con lo nuevo añadido a las listas.
+- Crear el método __str__ igual al de ADM
+
+ADT GRAPH
+
+- Incluir nuevos métodos
+- Crear e implementar el atributo directed
