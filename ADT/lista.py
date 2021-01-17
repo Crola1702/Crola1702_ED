@@ -26,6 +26,11 @@ class lista():
     def __len__(self):
         return self.lista.__len__()
     
+    def __getitem__(self, index):
+        if type(index) == slice:
+            raise TypeError("´__getitem__ does not support slices")
+        return self.lista.__getitem__(index)
+    
     def add_first(self, element):
         self.lista.add_first(element)
         self.size += 1

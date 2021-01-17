@@ -45,6 +45,9 @@ class array_list():
         return self.__has(element)
     
     def __getitem__(self, index):
+        """
+        No soporta slices.
+        """
         return self.get_element(index)
     
     #_______________________________
@@ -83,11 +86,7 @@ class array_list():
         """
         Retorna True si el lista está vacío, False de lo contrario
         """
-
-        if self.size == 0:
-            return True
-        else:
-            return False
+        return self.size == 0
     
     def first_element(self):
         """
@@ -107,10 +106,9 @@ class array_list():
         """
         Retorna el elemento en la posición 'pos' del lista
         """
-        if pos < self.size + self.base_index:
-            return self.elements[pos - self.base_index]
-        else:
-            return None
+        if pos < self.base_index or pos > self.size-1 + self.base_index:
+            raise IndexError(f"\nMin Index: {self.base_index}\nMax Index: {self.size-1 + self.base_index}")
+        return self.elements[pos - self.base_index]
     
     def remove_first(self):
         """
@@ -190,11 +188,11 @@ class array_list():
             pass
 
 if __name__ == '__main__':
-    nueva_lista = array_list()
+    nueva_lista = array_list(base_index=-1)
     print(nueva_lista, len(nueva_lista))
     nueva_lista.add_last(4)
     nueva_lista.add_last(3)
     nueva_lista.add_last(2)
     nueva_lista.add_last(1)
-    print(nueva_lista[1])
+    print(nueva_lista[4])
     print(nueva_lista, len(nueva_lista))

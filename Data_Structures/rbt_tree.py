@@ -22,6 +22,9 @@ class rbt_tree():
 
     def __len__(self):
         return self.size
+    
+    def __getitem__(self, key):
+        return self.get(key)
 
     #_______________________________
     #             API

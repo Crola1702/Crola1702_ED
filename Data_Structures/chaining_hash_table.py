@@ -19,10 +19,10 @@ class chaining_ht():
             self.table.add_last(bucket)
     
     def __str__(self):
-        cht_str = "CHT:{"
+        cht_str = ""
         for i in self.__entry_set():
             cht_str += str(i) + ','
-        return cht_str[:len(cht_str)-1] + '}'
+        return 'CHT:{' + cht_str[:len(cht_str)-1] + '}'
 
     def __iter__(self):
         return self.key_set().__iter__()
@@ -130,8 +130,9 @@ class chaining_ht():
 
 if __name__ == '__main__':
     new_ht = chaining_ht(initial_elements=4)
+    print(new_ht, len(new_ht))
     for i in range(8):
         new_ht.put(f"K{i}",f"V{i}")
 
-    print(new_ht)
+    print(new_ht, len(new_ht))
     

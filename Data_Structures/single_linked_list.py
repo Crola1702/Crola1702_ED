@@ -24,10 +24,10 @@ class sl_list():
         self.base_index = base_index
     
     def __str__(self):
-        sl_string = 'SL:['
+        sl_string = ''
         for i in self:
             sl_string += str(i) + ','
-        return sl_string.strip(',') +']'
+        return 'SL:[' + sl_string[:len(sl_string)-1] +']'
 
 
     def __iter__(self):
@@ -49,9 +49,10 @@ class sl_list():
         return self.__has(element)
 
     def __getitem__(self, index):
+        """
+        No soporta slices
+        """
         return self.get_element(index)
-
-
 
     def add_first(self,elemento):
         nodo = sl_node(elemento,self.first)
@@ -91,12 +92,11 @@ class sl_list():
         self.size += 1
     
     def is_empty(self):
-        if self.size == 0:
-            return True
-        else:
-            return False
+        return self.size == 0
     
     def get_element(self, pos):
+        if pos < self.base_index or pos > self.size-1 + self.base_index:
+            raise IndexError(f"\nMin Index: {self.base_index}\nMax Index: {self.size-1 + self.base_index}")
         return self.__get(pos).info
 
     def remove_first(self):
@@ -181,6 +181,6 @@ if __name__ == '__main__':
     nueva_lista.add_last(2)
     nueva_lista.add_last(3)
     nueva_lista.add_last(4)
-    print(nueva_lista[5])
+    print(nueva_lista[1])
     print(nueva_lista, len(nueva_lista))
         

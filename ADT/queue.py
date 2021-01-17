@@ -5,9 +5,15 @@ class queue():
     def __init__(self):
         self.queue = lt.lista('SL')
         self.size = 0
+
+    def __str__(self):
+        return str(self.queue)
+
+    def __len__(self):
+        return self.size
     
     def enqueue(self, element):
-        self.queue.add_first(element)
+        self.queue.add_last(element)
         self.size += 1
     
     def dequeue(self):
@@ -18,11 +24,18 @@ class queue():
         return self.queue.first_element()
     
     def is_empty(self):
-        if self.size == 0:
-            return True
-        return False
-    
-    def size(self):
-        return size
-    
+        return self.size == 0
 
+if __name__ == '__main__':
+    my_queue = queue()
+    print(my_queue, len(my_queue))
+    my_queue.enqueue(1)
+    my_queue.enqueue(5)
+    my_queue.enqueue(3)
+    my_queue.enqueue(4)
+    print(my_queue, len(my_queue))
+    print(my_queue.dequeue(), end=',')
+    print(my_queue.dequeue(), end=',')
+    print(my_queue.dequeue(), end=',')
+    print(my_queue.dequeue())
+    print(my_queue, len(my_queue))

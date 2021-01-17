@@ -22,6 +22,9 @@ class bst_tree():
 
     def __len__(self):
         return self.size
+    
+    def __getitem__(self, key):
+        return self.get(key)
 
     #_______________________________
     #             API
@@ -351,6 +354,7 @@ def my_cmpfunction(el1, el2):
 
 if __name__ == '__main__':
     tree = bst_tree(my_cmpfunction)
+    print(tree, len(tree))
     tree.put(10,10)
     tree.put(5,5)
     tree.put(7,7)
@@ -369,22 +373,4 @@ if __name__ == '__main__':
     tree.put(17,17)
     tree.put(16,16)
     tree.put(18,18)
-
-    print(tree, len(tree))
-
-    for i in range(1,19):
-        tree.remove(i)
-
-    # print(tree.remove(1))
-    # print(tree.remove(2))
-    # print(tree.remove(3))
-    # print(tree.remove(4))
-    # print(tree.remove(5))
-    # print(tree.remove(6))
-    # print(tree.remove(7))
-    # print(tree.remove(8))
-    # print(tree.remove(9))
-    # print(tree.remove(10))
-    print(tree, len(tree))
-    
-    
+    print(tree, len(tree))    

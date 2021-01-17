@@ -15,10 +15,10 @@ class probing_ht():
             self.table.add_last(map_entry())
     
     def __str__(self):
-        cht_str = "PHT:{"
+        cht_str = ""
         for i in self.__entry_set():
             cht_str += str(i) + ','
-        return cht_str[:len(cht_str)-1] + '}'
+        return "PHT:{" + cht_str[:len(cht_str)-1] + '}'
 
     def __iter__(self):
         return self.key_set().__iter__()
@@ -144,16 +144,9 @@ class probing_ht():
             iterations += 1
 
 if __name__ == '__main__':
-    new_ht = probing_ht(initial_elements=4)
+    new_ht = probing_ht(initial_elements=1)
+    print(new_ht, len(new_ht))
     for i in range(8):
         new_ht.put(f"K{i}",f"V{i}")
 
-    for i in range(1,9,2):
-        new_ht.remove(f"K{i}")
-
-    keys = new_ht.key_set()
-    print(keys)
-    # for i in range(8):
-        # print(new_ht.get(f"K{i}"))
-
-    # print(new_ht.get())
+    print(new_ht, len(new_ht))

@@ -4,13 +4,12 @@ from ADT import lista as lt
 from ADT import mapa as mp
 
 class adj_matrix():
-    def __init__(self, initial_elements=17, cmpfunction=None, directed=True):
+    def __init__(self, initial_elements=17, cmpfunction=None):
         self.edges = lt.lista('AL',cmpfunction)
         self.vertexes = mp.mapa('CHT', initial_elements, 1, cmpfunction)
         self.num_vertexes = 0
         self.num_edges = 0
         self.cmpfunction = cmpfunction
-        self.directed = directed
     
     def __str__(self):
         adm_str = f'ADM: ({str(self.vertexes)}\n'
@@ -37,8 +36,6 @@ class adj_matrix():
         vertex_B_index = self.vertexes.get(vertex_B).value
         self.edges.get_element(vertex_A_index).replace(vertex_B_index, weight)
         self.num_edges += 1
-        if not self.directed:
-            self.edges.get_element(vertex_B_index).replace(vertex_A_index, weight)
     
     def get_edge(self, vertex_A, vertex_B):
         vertex_A_index = self.vertexes.get(vertex_A).value

@@ -9,6 +9,8 @@ class mapa():
             self.map = cht.chaining_ht(initial_elements=initial_elements,load_factor=load_factor,cmpfunction=cmpfunction)
             self.type = datastructure
         elif datastructure == 'PHT':
+            if load_factor > 1:
+                load_factor = load_factor**-1
             self.map = pht.probing_ht(initial_elements=initial_elements,load_factor=load_factor,cmpfunction=cmpfunction)
             self.type = datastructure
     
@@ -26,6 +28,9 @@ class mapa():
     
     def __contains__(self, key):
         return self.map.__contains__(key)
+    
+    def __getitem__(self, key):
+        return self.map.__getitem__(key)
 
     #_______________________________
     #              API
@@ -57,3 +62,12 @@ class mapa():
     
     def entry_set(self):
         return self.map.entry_set()
+
+if __name__ == '__main__':
+    new_ht = mapa('PHT')
+    print(new_ht, len(new_ht))
+    for i in range(8):
+        new_ht.put(f"K{i}",f"V{i}")
+
+    print(new_ht['K4'])
+    print(new_ht, len(new_ht))
