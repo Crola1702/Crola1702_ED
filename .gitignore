@@ -128,4 +128,9 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# Test folder
+Test/
+
+# VsCode configuration
+.vscode/
 # tasks.txt
