@@ -1,0 +1,21 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>27</x><y>90</y><w>100</w><h>200</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+Map
+--
++ put(key, value)
++ get(key)
++ remove()
++ is_empty()
++ key_set()
++ value_set()
++ contains(key)
+- entry_set()
+- hash_value()
+- find()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>150</x><y>90</y><w>110</w><h>200</h></coordinates><panel_attributes>/&lt;&lt;Abstract&gt;&gt;/
+/Map Structure/
+--
+# size: int
+# spaces: int
+# load_factor: float
+# 
+</panel_attributes><additional_attributes></additional_attributes></element></diagram>

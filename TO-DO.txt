@@ -1,42 +1,69 @@
 ARRAY LIST
 
+- Implement error detection (Index out of range)
+- Documentation
+
 SINGLE LINKED LIST
+
+- Implement error detection (Index out of range)
+- Documentation
 
 ADT LISTA
 
+- Implement error detection (Index out of range)
+- Documentation
+- Create default cmpfunction
+
 ADT QUEUE
+
+- Documentation
 
 ADT STACK
 
+- Documentation
+
 PROBING HASH TABLE
+
+- Documentation
 
 CHAINING HASH TABLE
 
+- Documentation
+
 ADT MAP
 
+- Documentation
+
 BINARY SEARCH TREE
+
+- Documentation
 
 RED BLACK TREE
 
 - Implementar las funciones de eliminación
 - Probar y arreglar método __getitem__ y __contains__
+- Documentation
 
 ADT ORDERED MAP
 
 - Probar y arreglar método __getitem__ y __contains__
+- Documentation
 
 ADJACENCY MATRIX
 
 - Hacer pruebas
 - Cambiar el método __str__ para encontrar una forma eficiente
 - Quitar el atributo directed
+- Documentation
 
 ADJACENCY LIST
 
 - Reimplementar los métodos con lo nuevo añadido a las listas.
 - Crear el método __str__ igual al de ADM
+- Documentation
 
 ADT GRAPH
 
 - Incluir nuevos métodos
 - Crear e implementar el atributo directed
+- Documentation

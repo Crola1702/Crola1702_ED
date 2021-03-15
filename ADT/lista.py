@@ -76,7 +76,15 @@ class lista():
     def has(self, element):
         return self.lista.has(element)
     
-    def sort(self,sort):
+    def sublist(self, start, num_elements):
+        ret_list = sl_list(cmpfunction=self.cmpfunction, base_index=self.base_index)
+        i = start
+        while i <= num_elements and i < self.size-1 + self.base_index:
+            ret_list.add_first(self[i])
+            i += 1
+        return ret_list
+    
+    def sort(self, sort='selection'):
         return self.lista.sort(sort)
 
 class lt_iterator():

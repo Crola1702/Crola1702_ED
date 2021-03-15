@@ -1,17 +1,26 @@
 #lista.py
-# from Estructuras.sorts import * 
 import config
 from Data_Structures.sorts import *
 
 class array_list():
     """
-    Crea un lista con indexación base 'base_index'
+    Crola1702 Implementation for an array
     """
 
-    def __init__(self,cmpfunction=None,base_index=1):
+    def __init__(self,cmpfunction,base_index=1):
         
-        """
-        Inicializa el lista con las variables: Size, Elements y cmpfunction
+        r""" Creates a List of Array_List type (AL)
+        
+        Parameters
+        ----------
+        cmpfunction: function
+                for comparing elements
+                inside the list. Uses 0 for equal
+                elements and 1 or -1 for greater
+                or lesser
+
+        base_index: int
+                refers the initial index of 
         """
 
         self.size = 0
@@ -140,10 +149,9 @@ class array_list():
         elif pos == (self.size-1) + self.base_index:
             return self.remove_last()
         else:
+            removed_element = self.elements.pop(pos - self.base_index)
             self.size -= 1
-            # splitted_string = self.al_string.split(',')
-            # self.al_string = ','.join(splitted_string[:pos-self.base_index] + splitted_string[pos-self.base_index+1:])
-            return self.elements.pop(pos - self.base_index)
+            return removed_element
     
     def replace(self,pos,element):
         """
@@ -162,18 +170,11 @@ class array_list():
         self.replace(pos1,element2)
         self.replace(pos2,element1)
     
-    def __has(self, element):
-        for index in self:
-            if self.cmpfunction(index, element) == 0:
-                return True
-        return False
-    
     def index(self, element):
         for index in range(len(self)):
             if self.cmpfunction(self.elements[index], element) == 0:
                 return index + self.base_index
         return None
-    
 
     def sort(self,sort='selection'):
         """
@@ -184,8 +185,13 @@ class array_list():
             selection_sort(self)
         
         elif sort == 'insertion':
-            #print('Insertion Sort')
-            pass
+            insertion_sort(self)
+
+        def __has(self, element):
+            for index in self:
+                if self.cmpfunction(index, element) == 0:
+                    return True
+            return False
 
 if __name__ == '__main__':
     nueva_lista = array_list(base_index=-1)

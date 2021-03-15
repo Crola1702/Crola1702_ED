@@ -130,6 +130,10 @@ dmypy.json
 
 # Test folder
 Test/
+EDA_retos/
+
+# Data folder
+Data/
 
 # VsCode configuration
 .vscode/

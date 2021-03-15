@@ -141,17 +141,14 @@ class sl_list():
         self.replace(pos1,node2_info)
         self.replace(pos2,node1_info)
     
-    def __has(self, element):
-        if self.__find(element) is not None:
-            return True
-        return False
-    
     def index(self, element):
         return self.__find(element)
 
     def sort(self, sort='selection'):
         if sort == 'selection':
             selection_sort(self)
+        elif sort == 'insertion':
+            insertion_sort(self)
 
     # HELPER FUNCTIONS
 
@@ -168,10 +165,15 @@ class sl_list():
     def __find(self, element):
         local_pos = self.base_index
         for local_node in self:
-            if self.cmpfunction(local_node, element):
+            if self.cmpfunction(local_node, element) == 0:
                 return local_pos
             local_pos += 1
         return None
+    
+        def __has(self, element):
+            if self.__find(element) is not None:
+                return True
+            return False
         
 
 if __name__ == '__main__':
