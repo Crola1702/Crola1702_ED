@@ -3,7 +3,7 @@ import config
 from Data_Structures.sorts import *
 class sl_node():
 
-    def __init__(self,info=None,next=None):
+    def __init__(self, info: any = None, next = None):
         self.info = info
         self.next = next
     
@@ -16,7 +16,7 @@ class sl_node():
 
 class sl_list():
 
-    def __init__(self,cmpfunction=None,base_index=1):
+    def __init__(self, cmpfunction = None, base_index=1):
         self.size = 0
         self.first = None
         self.last = None
@@ -72,10 +72,14 @@ class sl_list():
         self.size += 1
     
     def first_element(self):
-        return self.first
+        if self.first is None:
+            return None
+        return self.first.info
     
     def last_element(self):
-        return self.last
+        if self.last is None:
+            return None
+        return self.last.info
 
     def insert_element(self, pos, elemento):
         if pos == self.base_index:
@@ -83,13 +87,12 @@ class sl_list():
         elif pos == self.size + self.base_index:
             self.add_last(elemento)
         else:
-            nodo = sl_node(elemento)
-            local_pos = self.base_index
+            nodo = sl_node(info=elemento)
             prev_node = self.__get(pos - 1)
             next_node = self.__get(pos)
             prev_node.next = nodo
             nodo.next = next_node
-        self.size += 1
+            self.size += 1
     
     def is_empty(self):
         return self.size == 0
@@ -104,12 +107,12 @@ class sl_list():
         new_node = self.first.next
         self.first = new_node
         self.size -= 1
-        return removed_node
+        return removed_node.info
 
     def remove_last(self):
         removed_node = self.last
         if self.size > 1:
-            new_last = self.get_element((self.size-2) + self.base_index)
+            new_last = self.__get((self.size-2) + self.base_index)
             new_last.next = None
             self.last = new_last
             self.size -= 1
@@ -117,7 +120,7 @@ class sl_list():
             self.first = None
             self.last = None
             self.size = 0
-        return removed_node
+        return removed_node.info
     
     def remove_pos(self, pos):
         if pos == self.base_index:
@@ -129,7 +132,7 @@ class sl_list():
             new_pos = self.__get(pos-1)
             new_pos.next = removed_node.next    
             self.size -= 1
-            return removed_node
+            return removed_node.info
     
     def replace(self, pos, element):
         node = self.__get(pos)
@@ -140,9 +143,22 @@ class sl_list():
         node2_info = self.__get(pos2).info
         self.replace(pos1,node2_info)
         self.replace(pos2,node1_info)
+
+    def has(self, element):
+        if self.__find(element) is not None:
+            return True
+        return False
     
-    def index(self, element):
-        return self.__find(element)
+    def index(self, element) -> int:
+        local_pos = self.base_index
+        local_node = self.first
+        while local_node is not None:
+            if (self.cmpfunction(element, local_node.info) == 0):
+                return local_pos
+            local_pos += 1
+            local_node = local_node.next
+        return -1
+                
 
     def sort(self, sort='selection'):
         if sort == 'selection':
@@ -169,12 +185,6 @@ class sl_list():
                 return local_pos
             local_pos += 1
         return None
-    
-        def __has(self, element):
-            if self.__find(element) is not None:
-                return True
-            return False
-        
 
 if __name__ == '__main__':
     nueva_lista = sl_list()

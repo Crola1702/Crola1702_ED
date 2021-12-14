@@ -7,7 +7,7 @@ class array_list():
     Crola1702 Implementation for an array
     """
 
-    def __init__(self,cmpfunction,base_index=1):
+    def __init__(self, cmpfunction, base_index=1):
         
         r""" Creates a List of Array_List type (AL)
         
@@ -36,15 +36,15 @@ class array_list():
         
 
     def __iter__(self):
-        self.index = 0
+        self.pos = 0
         return self
 
     def __next__(self):
-        if self.index == self.size:
+        if self.pos == self.size:
             raise StopIteration
         else:
-            element = self.get_element(self.index + self.base_index)
-            self.index += 1
+            element = self.get_element(self.pos + self.base_index)
+            self.pos += 1
             return element
     
     def __len__(self):
@@ -84,11 +84,8 @@ class array_list():
         """
         Añade un elemento en la posición 'pos' de la lista
         """
-        self.size += 1
         self.elements.insert(pos-self.base_index,element)
-            # splitted_string = self.al_string.split(',')
-            # splitted_string.insert(pos-self.base_index, str(element))
-            # self.al_string = ','.join(splitted_string)
+        self.size += 1
         
     
     def is_empty(self):
@@ -101,15 +98,13 @@ class array_list():
         """
         Retorna el primer elemento del lista
         """
-
         return self.elements[0]
     
     def last_element(self):
         """
         Retorna el último elemento del lista
         """
-
-        return self.elements[self.size-1]
+        return self.elements[len(self.elements)-1]
     
     def get_element(self,pos):
         """
@@ -123,10 +118,7 @@ class array_list():
         """
         Elimina el primer elemento del lista y lo retorna
         """
-
         self.size -= 1
-        # splitted_string = self.al_string.split(',')
-        # self.al_string = ','.join(splitted_string[1:])
         return self.elements.pop(0)
         
     
@@ -137,8 +129,7 @@ class array_list():
         # splitted_string = self.al_string.split(',')
         # self.al_string = ','.join(splitted_string[:self.size-1])
         self.size -= 1
-        
-        return self.elements.pop(self.size-1)
+        return self.elements.pop(-1)
     
     def remove_pos(self,pos):
         """
@@ -146,7 +137,7 @@ class array_list():
         """
         if pos == self.base_index:
             return self.remove_first()
-        elif pos == (self.size-1) + self.base_index:
+        elif pos == (len(self.elements)-1) + self.base_index:
             return self.remove_last()
         else:
             removed_element = self.elements.pop(pos - self.base_index)
@@ -157,7 +148,6 @@ class array_list():
         """
         Reemplaza el valor de un elemento en la posición 'pos'
         """
-
         self.elements[pos - self.base_index] = element
 
 
@@ -171,10 +161,10 @@ class array_list():
         self.replace(pos2,element1)
     
     def index(self, element):
-        for index in range(len(self)):
+        for index in range(len(self.elements)):
             if self.cmpfunction(self.elements[index], element) == 0:
                 return index + self.base_index
-        return None
+        return -1
 
     def sort(self,sort='selection'):
         """
@@ -187,11 +177,11 @@ class array_list():
         elif sort == 'insertion':
             insertion_sort(self)
 
-        def __has(self, element):
-            for index in self:
-                if self.cmpfunction(index, element) == 0:
-                    return True
-            return False
+    def has(self, element):
+        for index in self:
+            if self.cmpfunction(index, element) == 0:
+                return True
+        return False
 
 if __name__ == '__main__':
     nueva_lista = array_list(base_index=-1)
